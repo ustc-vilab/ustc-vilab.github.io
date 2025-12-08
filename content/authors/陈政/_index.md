@@ -26,7 +26,8 @@ organizations:
 # bio: My research interests include distributed robotics, mobile computing and programmable matter.
 
 interests:
-  - 大模型继续预训练 、医学图像
+  - 大模型继续预训练
+  - 医学图像
 
 # education:
 #   courses:

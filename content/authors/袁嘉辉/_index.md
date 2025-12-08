@@ -26,7 +26,8 @@ organizations:
 # bio: My research interests include distributed robotics, mobile computing and programmable matter.
 
 interests:
-  - 事件相机/多模态生成
+  - 事件相机
+  - 多模态生成
 
 # education:
 #   courses:

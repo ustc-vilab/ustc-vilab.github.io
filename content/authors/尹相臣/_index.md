@@ -24,7 +24,8 @@ organizations:
 # bio: My research interests include distributed robotics, mobile computing and programmable matter.
 
 interests:
-  - 多模态生成、视频生成
+  - 多模态生成
+  - 视频生成
 
 profile_url:  'https://xiangchenyin.github.io/en.html'
 # education:
