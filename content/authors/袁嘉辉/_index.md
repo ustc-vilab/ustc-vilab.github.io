@@ -6,6 +6,8 @@ title: 袁嘉辉
 first_name: jiahui
 last_name: yuan
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Username (this should match the folder name)
 authors:
   - 袁嘉辉

@@ -12,7 +12,6 @@ sections:
       #   Edit `user_groups` in each user's profile to add them to one or more of these groups.
       user_groups:
           - 导师
-          - 博士后
           - 博士生
           - 硕士生
           - 毕业生

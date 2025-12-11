@@ -10,6 +10,8 @@ last_name: xiao
 authors:
   - 肖霈霖
 
+avatar_anchor: Bottom  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 

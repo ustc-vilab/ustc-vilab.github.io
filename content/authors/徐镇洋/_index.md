@@ -10,6 +10,8 @@ last_name: xu
 authors:
   - 徐镇洋
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 

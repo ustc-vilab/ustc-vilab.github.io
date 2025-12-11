@@ -11,6 +11,8 @@ last_name: li
 authors:
   - 李和倍
 
+avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 

@@ -10,6 +10,8 @@ last_name: hu
 authors:
   - 胡张驰
 
+avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 

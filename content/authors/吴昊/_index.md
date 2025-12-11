@@ -10,6 +10,8 @@ last_name: wu
 authors:
   - 吴昊
 
+avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 

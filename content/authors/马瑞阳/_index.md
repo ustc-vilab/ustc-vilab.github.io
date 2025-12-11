@@ -10,6 +10,8 @@ last_name: ma
 authors:
   - 马瑞阳
 
+avatar_anchor: Smart  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 

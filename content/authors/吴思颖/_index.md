@@ -1,16 +1,17 @@
 ---
 # Display name
-title: 李欣羽
+title: 吴思颖
+
 
 # Full name (for SEO)
-first_name: xinyu
-last_name: li
+first_name: siying
+last_name: wu
 
 # Username (this should match the folder name)
 authors:
-  - 李欣羽
+  - 吴思颖
 
-avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
+avatar_anchor: Right  # 可选值：Top / Center / Bottom / Left / Right / Smart
 
 # Is this the primary user of the site?
 superuser: false
@@ -18,7 +19,7 @@ superuser: false
 profile: false
 
 # Role/position
-role: 硕士生
+role: 博士后
 
 # Organizations/Affiliations
 organizations:
@@ -28,7 +29,9 @@ organizations:
 # bio: My research interests include distributed robotics, mobile computing and programmable matter.
 
 interests:
-  - 多模态情感分析
+  - 多模态大模型
+  - 医学人工智能
+
 
 # education:
 #   courses:
@@ -66,11 +69,11 @@ interests:
 #     link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: 'xinyli@mail.ustc.edu.cn'
+email: 'wsy315@iai.ustc.edu.cn'
 
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
 user_groups:
-  - 硕士生
+  - 导师
 ---
- 
+
