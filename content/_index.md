@@ -126,7 +126,7 @@ sections:
 
           <div class="news-card">
             <h3>新闻</h3>
-            {{< my_debug 5 >}}
+            {{< event_news 5 >}}
           </div>
         </div>
 
