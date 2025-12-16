@@ -10,11 +10,13 @@ last_name: she
 authors:
   - 佘栋
 
+avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 
 profile: false
-
+graduation_year: 2024
 # Role/position
 role: 毕业生
 

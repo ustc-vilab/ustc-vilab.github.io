@@ -12,6 +12,60 @@
 {{ $show_email := $block.design.show_email | default false }}
 {{ $show_graduation := $block.design.show_graduation | default false }}
 
+{{/* Person card renderer to avoid duplication */}}
+{{ define "people_card" }}
+  {{ $person := .person }}
+  {{ $show_social := .show_social }}
+  {{ $show_interests := .show_interests }}
+  {{ $show_organizations := .show_organizations }}
+  {{ $show_role := .show_role }}
+  {{ $show_email := .show_email }}
+  {{ $show_graduation := .show_graduation }}
+
+  {{ $avatar := ($person.Resources.ByType "image").GetMatch "*avatar*" }}
+  {{/* Get link to user's profile page. Default: authors section; optional: custom homepage via `profile_url`; disable with `profile: false`. */}}
+  {{ $link := "" }}
+  {{ with site.GetPage (printf "/authors/%s" (path.Base $person.File.Dir)) }}
+    {{ $link = .RelPermalink }}
+  {{ end }}
+  {{/* If author defines a custom homepage URL, use it instead. */}}
+  {{ with $person.Params.profile_url }}
+    {{ $link = . }}
+  {{ end }}
+  {{/* Per-person switch: set `profile: false` in author front matter to disable all links. */}}
+  {{ $profile := $person.Params.profile | default true }}
+  {{ if not $profile }}
+    {{ $link = "" }}
+  {{ end }}
+
+  <div class="col-12 col-sm-auto people-person">
+    {{ $src := "" }}
+    {{ if site.Params.features.avatar.gravatar }}
+      {{ $src = printf "https://s.gravatar.com/avatar/%s?s=150" (md5 $person.Params.email) }}
+    {{ else if $avatar }}
+      {{/* Per-person crop anchor: set `avatar_anchor` in author front matter to center/top/bottom/left/right/smart; defaults to center. Normalize to lowercase for Hugo Fill. */}}
+      {{ $anchor := ($person.Params.avatar_anchor | default "center" | lower) }}
+      {{ $avatar_image := $avatar.Fill (printf "270x270 %s" $anchor) }}
+      {{ $src = $avatar_image.RelPermalink }}
+    {{ end }}
+    {{ if $src }}
+      {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
+      {{with $link}}<a href="{{.}}">{{end}}<img width="270" height="270" loading="lazy" class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="{{ $src }}" alt="Avatar">{{if $link}}</a>{{end}}
+    {{ end }}
+
+    <div class="portrait-title">
+      <h2>{{with $link}}<a href="{{.}}">{{end}}{{ $person.Title }}{{if $link}}</a>{{end}}</h2>
+      {{ if and $show_organizations $person.Params.organizations }}{{ range $person.Params.organizations }}<h3>{{ .name }}</h3>{{ end }}{{ end }}
+      {{ if and $show_role $person.Params.role }}<h3>{{ $person.Params.role | markdownify | emojify }}</h3>{{ end }}
+      {{ if and $show_email $person.Params.email }}<p class="people-email"><a href="mailto:{{ $person.Params.email }}">{{ $person.Params.email }}</a></p>{{ end }}
+      {{ if $show_social }}{{ partial "social_links" $person }}{{ end }}
+      {{ if and $show_interests $person.Params.interests }}<p class="people-interests">{{ delimit $person.Params.interests ", " | markdownify | emojify }}</p>{{ end }}
+      {{ if and $show_graduation $person.Params.graduation_destination }}<p class="people-graduation">{{ $person.Params.graduation_destination | markdownify | emojify }}</p>{{ end }}
+    </div>
+  </div>
+{{ end }}
+{{ $show_group_divider := $block.design.show_group_divider | default false }}
+
 <div class="row justify-content-center people-widget">
   {{ with $block.content.title }}
     <div class="section-heading col-12 mb-3 text-center">
@@ -26,61 +80,88 @@
     </div>
   {{ end }}
 
-  {{ range $block.content.user_groups }}
-    {{ $query := where (where site.Pages "Section" "authors") ".Params.user_groups" "intersect" (slice .) }}
+  {{ range $group_index, $group := $block.content.user_groups }}
+    {{ $query := where (where site.Pages "Section" "authors") ".Params.user_groups" "intersect" (slice $group) }}
 
-    {{/* Sort */}}
     {{ $sort_by := $block.content.sort_by | default "Params.last_name" }}
     {{ $sort_by = partial "blox-core/functions/get_sort_by_parameter" $sort_by }}
     {{ $sort_ascending := $block.content.sort_ascending | default true }}
     {{ $sort_order := cond $sort_ascending "asc" "desc" }}
-    {{ $query = sort $query $sort_by $sort_order }}
+
+    {{ $sorted_query := slice }}
+    {{ if or (eq $group "博士生") (eq $group "硕士生") }}
+      {{/* 步骤1：先按入学年份升序排（仅含年份的作者） */}}
+      {{ $has_year := where $query "Params.admission_year" "ne" nil }}
+      {{ $has_year = sort $has_year "Params.admission_year" "asc" }}
+      {{/* 步骤2：按年份分组，每组内按姓氏升序 */}}
+      {{ $years := slice }}
+      {{ range $p := $has_year }}{{ $years = $years | append $p.Params.admission_year }}{{ end }}
+      {{ $years = uniq $years | sort }}
+      {{ range $year := $years }}
+        {{ $year_group := where $has_year "Params.admission_year" "eq" $year }}
+        {{ $year_group = sort $year_group "Params.last_name" "asc" }}
+        {{ $sorted_query = $sorted_query | append $year_group }}
+      {{ end }}
+      {{/* 步骤3：追加无年份的作者（按姓氏升序） */}}
+      {{ $no_year := where $query "Params.admission_year" "eq" nil }}
+      {{ $no_year = sort $no_year "Params.last_name" "asc" }}
+      {{ $sorted_query = $sorted_query | append $no_year }}
+    {{ else if eq $group "毕业生" }}
+      {{/* 步骤1：先按毕业年份升序排（仅含年份的作者） */}}
+      {{ $has_year := where $query "Params.graduation_year" "ne" nil }}
+      {{ $has_year = sort $has_year "Params.graduation_year" "asc" }}
+      {{/* 步骤2：按年份分组，每组内按姓氏升序 */}}
+      {{ $years := slice }}
+      {{ range $p := $has_year }}{{ $years = $years | append $p.Params.graduation_year }}{{ end }}
+      {{ $years = uniq $years | sort }}
+      {{ range $year := $years }}
+        {{ $year_group := where $has_year "Params.graduation_year" "eq" $year }}
+        {{ $year_group = sort $year_group "Params.last_name" "asc" }}
+        {{ $sorted_query = $sorted_query | append $year_group }}
+      {{ end }}
+      {{/* 步骤3：追加无年份的作者（按姓氏升序） */}}
+      {{ $no_year := where $query "Params.graduation_year" "eq" nil }}
+      {{ $no_year = sort $no_year "Params.last_name" "asc" }}
+      {{ $sorted_query = $sorted_query | append $no_year }}
+    {{ else }}
+      {{/* 其他组：沿用原有规则 */}}
+      {{ $sorted_query = sort $query $sort_by $sort_order }}
+    {{ end }}
+    {{ $query = $sorted_query }}
+
+    {{ if and $show_group_divider (gt $group_index 0) }}
+      <div class="col-12"><hr class="people-divider mb-4 mt-3"></div>
+    {{ end }}
 
     {{if $query | and (gt (len $block.content.user_groups) 1) }}
       <div class="col-md-12">
-        <h2 class="mb-4">{{ . | markdownify }}</h2>
+        <h2 class="mb-4">{{ $group | markdownify }}</h2>
       </div>
     {{end}}
 
-    {{ range $query }}
-      {{ $avatar := (.Resources.ByType "image").GetMatch "*avatar*" }}
-      {{/* Get link to user's profile page. Default: authors section; optional: custom homepage via `profile_url`; disable with `profile: false`. */}}
-      {{ $link := "" }}
-      {{ with site.GetPage (printf "/authors/%s" (path.Base .File.Dir)) }}
-        {{ $link = .RelPermalink }}
-      {{ end }}
-      {{/* If author defines a custom homepage URL, use it instead. */}}
-      {{ with .Params.profile_url }}
-        {{ $link = . }}
-      {{ end }}
-      {{/* Per-person switch: set `profile: false` in author front matter to disable all links. */}}
-      {{ $profile := .Params.profile | default true }}
-      {{ if not $profile }}
-        {{ $link = "" }}
-      {{ end }}
-      <div class="col-12 col-sm-auto people-person">
-        {{ $src := "" }}
-        {{ if site.Params.features.avatar.gravatar }}
-          {{ $src = printf "https://s.gravatar.com/avatar/%s?s=150" (md5 .Params.email) }}
-        {{ else if $avatar }}
-          {{ $avatar_image := $avatar.Fill "270x270 Center" }}
-          {{ $src = $avatar_image.RelPermalink }}
-        {{ end }}
-        {{ if $src }}
-          {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
-          {{with $link}}<a href="{{.}}">{{end}}<img width="270" height="270" loading="lazy" class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="{{ $src }}" alt="Avatar">{{if $link}}</a>{{end}}
-        {{ end }}
+    {{ if eq $group "导师" }}
+      {{/* 导师组：允许通过 mentor_section=lead 将成员单独放第一行，再用分割线与其他成员分隔 */}}
+      {{ $lead := where $query ".Params.mentor_section" "eq" "lead" }}
+      {{ $lead = sort $lead $sort_by $sort_order }}
+      {{ $others := where $query ".Params.mentor_section" "ne" "lead" }}
+      {{ $others = sort $others $sort_by $sort_order }}
 
-        <div class="portrait-title">
-          <h2>{{with $link}}<a href="{{.}}">{{end}}{{ .Title }}{{if $link}}</a>{{end}}</h2>
-          {{ if and $show_organizations .Params.organizations }}{{ range .Params.organizations }}<h3>{{ .name }}</h3>{{ end }}{{ end }}
-          {{ if and $show_role .Params.role }}<h3>{{ .Params.role | markdownify | emojify }}</h3>{{ end }}
-          {{ if and $show_email .Params.email }}<p class="people-email"><a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>{{ end }}
-          {{ if $show_social }}{{ partial "social_links" . }}{{ end }}
-          {{ if and $show_interests .Params.interests }}<p class="people-interests">{{ delimit .Params.interests ", " | markdownify | emojify }}</p>{{ end }}
-          {{ if and $show_graduation .Params.graduation_destination }}<p class="people-graduation">{{ .Params.graduation_destination | markdownify | emojify }}</p>{{ end }}
-        </div>
-      </div>
+      {{ range $lead }}
+        {{ template "people_card" (dict "person" . "show_social" $show_social "show_interests" $show_interests "show_organizations" $show_organizations "show_role" $show_role "show_email" $show_email "show_graduation" $show_graduation) }}
+      {{ end }}
+
+      {{/* 如果既有 lead 又有其他成员，用一个换行占位把下一批另起一行（不用分割线） */}}
+      {{ if and (gt (len $lead) 0) (gt (len $others) 0) }}
+        <div class="w-100 my-2"></div>
+      {{ end }}
+
+      {{ range $others }}
+        {{ template "people_card" (dict "person" . "show_social" $show_social "show_interests" $show_interests "show_organizations" $show_organizations "show_role" $show_role "show_email" $show_email "show_graduation" $show_graduation) }}
+      {{ end }}
+    {{ else }}
+      {{ range $query }}
+        {{ template "people_card" (dict "person" . "show_social" $show_social "show_interests" $show_interests "show_organizations" $show_organizations "show_role" $show_role "show_email" $show_email "show_graduation" $show_graduation) }}
+      {{ end }}
     {{ end }}
   {{ end }}
 </div>

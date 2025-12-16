@@ -10,6 +10,8 @@ last_name: zhang
 authors:
   - 张璇烨
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+graduation_year: 2025
 # Is this the primary user of the site?
 superuser: false
 

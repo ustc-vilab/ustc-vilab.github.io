@@ -9,6 +9,8 @@ last_name: wu
 # Username (this should match the folder name)
 authors:
   - 吴振宇
+admission_year: 2023
+avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
 
 # Is this the primary user of the site?
 superuser: false

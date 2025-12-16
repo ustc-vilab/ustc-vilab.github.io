@@ -12,6 +12,40 @@
   justify-content: center;
 }
 
+// ================================
+// People widget layout adjustments
+// ================================
+
+// 增大每个成员卡片和下一行头像之间的间距
+.people-widget .people-person {
+  margin-bottom: 1.75rem;
+}
+
+// 缩小 email / 毕业去向 / interests 之间的竖直间距
+.people-widget .people-person .people-email,
+.people-widget .people-person .people-graduation,
+.people-widget .people-person .people-interests {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+// 保证整个文字区域和头像有一个适中间距
+.people-widget .people-person .portrait-title {
+  margin-top: 0.5rem;
+}
+
+.navbar {
+  min-height: 85px; // 设置您期望的最小高度，例如 80px
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* 顶栏右侧菜单文字整体放大一点 */
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  /* 默认大约是 1rem，可按需要调整 */
+}
+
 /* 全站基础字号略微缩小 */
 body {
   font-size: 0.9rem; /* 默认约 1rem，缩小 10% */
@@ -25,11 +59,52 @@ body {
   font-size: 0.95rem;
 }
 
-/* ================================
-   顶栏 (Navbar) 样式调整
-   ================================ */
+/* 顶栏品牌区：logo + 两行文字 + ViLab */
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgb(0, 112, 192);
+  font-family: "Broadway", "Times New Roman", serif;
+  font-size: 2.1rem; /* ViLab 字号 */
+  letter-spacing: 0.02em;
+}
 
-/* 顶栏右侧菜单：黑体 + 加粗 + 放大 */
+.navbar-brand .brand-logo {
+  width: 1.6em;
+  height: 1.6em;
+  background: url("/media/ustc-logo.png") center/contain no-repeat;
+  flex-shrink: 0;
+}
+
+.navbar-brand .brand-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  color: #000;
+  font-family: "SimHei", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem; /* 与右侧菜单同尺寸 */
+  text-align: center;
+}
+
+.navbar-brand .brand-en {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: "Arial Black", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: rgb(0, 112, 192);
+}
+
+.navbar-brand .brand-mark {
+  font-family: "Broadway", "Times New Roman", serif;
+  font-size: 2.1rem;
+  color: rgb(0, 112, 192);
+  line-height: 1;
+  display: none; /* 暂时隐藏 ViLab */
+}
+
+/* 顶栏右侧菜单：黑体 + 加粗 */
 .navbar-nav .nav-link {
   font-size: 1.1rem; /* 默认约 1rem */
   font-family: "SimHei", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
@@ -103,6 +178,16 @@ body {
   margin-top: 0.5rem;
 }
 
+.page-body > .universal-wrapper {
+  width: 1250px !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  box-sizing: border-box !important;
+}
+
 /* ================================
    首页两栏布局 (实验室简介 + 新闻)
    ================================ */
@@ -124,14 +209,14 @@ body {
 
 /* 左侧文案 (70%) */
 .news-list li > a {
-  flex: 0 0 70%;
+  flex: 0 0 60%;
   margin-right: 8px;
   line-height: 1.3;
 }
 
 /* 右侧缩略图 (30%) */
 .news-thumb {
-  flex: 0 0 30%;
+  flex: 0 0 40%;
 }
 
 .news-thumb img {

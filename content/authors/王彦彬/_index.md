@@ -10,11 +10,13 @@ last_name: wang
 authors:
   - 王彦彬
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 
 profile: false
-
+admission_year: 2025
 # Role/position
 role: 硕士生
 

@@ -10,11 +10,13 @@ last_name: zuo
 authors:
   - 左延辰
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
 
 profile: false
-
+graduation_year: 2023
 # Role/position
 role: 毕业生
 

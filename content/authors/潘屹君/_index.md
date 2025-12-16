@@ -9,6 +9,8 @@ last_name: pan
 # Username (this should match the folder name)
 authors:
   - 潘屹君
+admission_year: 2020
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
 
 # Is this the primary user of the site?
 superuser: false

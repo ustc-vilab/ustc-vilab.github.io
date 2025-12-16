@@ -10,6 +10,8 @@ last_name: sun
 authors:
   - 孙晓艳
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+mentor_section: lead
 # Is this the primary user of the site?
 superuser: true
 

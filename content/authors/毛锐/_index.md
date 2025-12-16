@@ -10,6 +10,8 @@ last_name: mao
 authors:
   - 毛锐
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+admission_year: 2023
 # Is this the primary user of the site?
 superuser: false
 

@@ -10,9 +10,11 @@ last_name: xiao
 authors:
   - 肖霈霖
 
+avatar_anchor: Bottom  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
-
+graduation_year: 2025
 profile: false
 
 # Role/position
@@ -20,7 +22,7 @@ role: 毕业生
 
 # Organizations/Affiliations
 organizations:
-  - name: 
+  - name: 中电十所
 
 # graduation_destination: 
 # Short bio (displayed in user profile at end of posts)
@@ -29,7 +31,7 @@ organizations:
 interests:
   - 事件相机、微表情识别
 
-
+graduation_destination: 去向：中电十所
 # education:
 #   courses:
 #     - course: PhD in Artificial Intelligence
