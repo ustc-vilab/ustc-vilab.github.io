@@ -72,6 +72,29 @@
   </div>
 </div>
 
+<style>
+/* 最终解决方案：强制设置固定宽度以加宽 publication 列表区域 */
+.page-body > .universal-wrapper:nth-of-type(2) {
+    /* 核心：设置固定像素宽度，并移除最大宽度限制 */
+    width: 1360px !important;
+    max-width: none !important;
+
+    /* 保障：确保元素在父容器中正确居中 */
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    /* 保障：设置合理的左右内边距，防止内容紧贴边界 */
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+
+    /* 保障：统一盒模型计算方式，避免意外 */
+    box-sizing: border-box !important;
+
+    /* 可选：移除之前用于调试的红色边框 */
+    /* border: 2px solid red !important; */
+}
+</style>
+
 {{/* 修改2: 添加精准的点击拦截脚本 */}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -103,4 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+
 {{- end -}}
+
+
