@@ -73,7 +73,7 @@ body {
 .navbar-brand .brand-logo {
   width: 1.6em;
   height: 1.6em;
-  background: url("/media/ustc-logo.png") center/contain no-repeat;
+  background: url("./media/ustc-logo.png") center/contain no-repeat;
   flex-shrink: 0;
 }
 
@@ -122,12 +122,12 @@ body {
   letter-spacing: 0.02em;
 }
 
-.navbar-brand .brand-logo {
-  width: 1.6em;
-  height: 1.6em;
-  background: url("/media/ustc-logo.png") center/contain no-repeat;
-  flex-shrink: 0;
-}
+// .navbar-brand .brand-logo {
+//   width: 1.6em;
+//   height: 1.6em;
+//   background: url("/media/ustc-logo.png") center/contain no-repeat;
+//   flex-shrink: 0;
+// }
 
 .navbar-brand .brand-label {
   display: flex;
