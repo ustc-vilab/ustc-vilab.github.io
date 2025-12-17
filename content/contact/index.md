@@ -1,5 +1,5 @@
 ---
-title: Join Us
+title: 加入我们
 date: 2022-10-24
 
 type: landing
@@ -8,7 +8,7 @@ type: landing
 sections:
   - block: markdown
     content:
-      title: Join Us
+      title: 加入我们
       subtitle: We are looking for self-motivated researchers.
     design:
       columns: '1'
