@@ -3,13 +3,15 @@
 title: 余跃
 
 # Full name (for SEO)
-first_name: yue
+first_name: yu
 last_name: yu
 
 # Username (this should match the folder name)
 authors:
   - 余跃
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+admission_year: 2024
 # Is this the primary user of the site?
 superuser: false
 

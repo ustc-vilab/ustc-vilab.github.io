@@ -10,9 +10,11 @@ last_name: chen
 authors:
   - 陈杰
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+
 # Is this the primary user of the site?
 superuser: false
-
+admission_year: 2024
 profile: false
 
 # Role/position

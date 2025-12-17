@@ -10,6 +10,8 @@ last_name: li
 # Username (this should match the folder name)
 authors:
   - 李和倍
+admission_year: 2022
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
 
 # Is this the primary user of the site?
 superuser: false

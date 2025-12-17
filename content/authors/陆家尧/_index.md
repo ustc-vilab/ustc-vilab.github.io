@@ -9,6 +9,8 @@ last_name: lu
 # Username (this should match the folder name)
 authors:
   - 陆家尧
+admission_year: 2021
+avatar_anchor: Center  # 可选值：Top / Center / Bottom / Left / Right / Smart
 
 # Is this the primary user of the site?
 superuser: false

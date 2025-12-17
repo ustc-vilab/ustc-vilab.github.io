@@ -10,6 +10,8 @@ last_name: chen
 # Username (this should match the folder name)
 authors:
   - 陈志鸿
+admission_year: 2024
+avatar_anchor: Smart  # 可选值：Top / Center / Bottom / Left / Right / Smart
 
 # Is this the primary user of the site?
 superuser: false

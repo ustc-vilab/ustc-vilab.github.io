@@ -1,5 +1,5 @@
 ---
-title: People
+title: 实验室成员
 date: 2022-10-24
 
 type: landing
@@ -12,7 +12,6 @@ sections:
       #   Edit `user_groups` in each user's profile to add them to one or more of these groups.
       user_groups:
           - 导师
-          - 博士后
           - 博士生
           - 硕士生
           - 毕业生

@@ -10,6 +10,8 @@ last_name: he
 authors:
   - 贺子龙
 
+avatar_anchor: Top  # 可选值：Top / Center / Bottom / Left / Right / Smart
+admission_year: 2025
 # Is this the primary user of the site?
 superuser: false
 
