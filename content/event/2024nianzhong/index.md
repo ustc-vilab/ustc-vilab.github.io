@@ -1,11 +1,11 @@
 ---
 title: 2024年年终总结
 
-event: 2024 Year-End Summary
+# event: 2024 Year-End Summary
 
 # event_url: https://example.org
 
-location: HeFei
+location: 合肥
 # address:
 #   street: 450 Serra Mall
 #   city: HeFei
@@ -14,7 +14,7 @@ location: HeFei
 #   country: United States
 
 # summary: Summary.
-abstract: 'Welcome to the lab, Class of 2023! Please join us for a welcome dinner at Tongqing Building.'
+abstract: '2024年年终总结'
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.

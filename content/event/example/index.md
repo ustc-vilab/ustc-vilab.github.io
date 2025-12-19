@@ -1,10 +1,10 @@
 ---
 title: 2025年新年聚餐
 
-event: New Year's Day Gathering 2025
+# event: New Year's Day Gathering 2025
 # event_url: https://example.org
 
-location: HeFei
+location: 合肥
 # address:
 #   street: 450 Serra Mall
 #   city: HeFei
@@ -13,7 +13,7 @@ location: HeFei
 #   country: United States
 
 #summary: Gathering.
-abstract: 'The entire lab is going out for a group dinner.'
+abstract: 2025年新年聚餐
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.

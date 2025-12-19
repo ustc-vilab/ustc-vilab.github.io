@@ -154,7 +154,7 @@
 # Publication/Event details
 
 - id: abstract
-  translation: Abstract
+  translation: 摘要
 
 - id: publication
   translation: Publication
@@ -163,16 +163,16 @@
   translation: Type
 
 - id: date
-  translation: Date
+  translation: 日期
 
 - id: last_updated
   translation: Last updated on
 
 - id: event
-  translation: Event
+  translation: 事件
 
 - id: location
-  translation: Location
+  translation: 地点
 
 - id: pub_paper_conference
   translation: Conference paper

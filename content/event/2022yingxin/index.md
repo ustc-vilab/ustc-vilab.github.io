@@ -1,10 +1,9 @@
 ---
 title: 欢迎2022级同学加入实验室！
-
-event: Welcome to the Class of 2022
+# event: Welcome to the Class of 2022
 # event_url: https://example.org
 
-location: HeFei
+location: 合肥
 # address:
 #   street: 450 Serra Mall
 #   city: HeFei
@@ -13,7 +12,7 @@ location: HeFei
 #   country: United States
 
 # summary: Welcome.
-abstract: 'Welcome to the lab, Class of 2022! Please join us for a welcome dinner at Tongqing Building.'
+abstract: '欢迎2022级同学加入实验室！'
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.

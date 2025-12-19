@@ -2,10 +2,10 @@
 #title: Two papers are accepted by MM'25
 title: 祝贺实验室两项科研成果被 MM'25 录用！
 
-event: Participate in the 2023 Valse
+# event: Participate in the 2023 Valse
 # event_url: https://example.org
 
-location: Wuxi
+location: 合肥
 # address:
 #   street: 450 Serra Mall
 #   city: HeFei
@@ -15,7 +15,7 @@ location: Wuxi
 
 #summary: Congratulations to Yijun Wang, Zhangchi Hu and all the collaborators for their papers at MM'25.
 summary: 恭喜王义钧和胡张驰同学！
-abstract: 'All members of the laboratory attended the Valse event held in Wuxi.'
+abstract: 恭喜王义钧和胡张驰同学！
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.

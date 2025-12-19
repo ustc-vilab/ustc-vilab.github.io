@@ -1,10 +1,10 @@
 ---
 title: 参加2023年无锡Valse
 
-event: Participate in the 2023 Valse
+# event: Participate in the 2023 Valse
 # event_url: https://example.org
 
-location: Wuxi
+location: 无锡
 # address:
 #   street: 450 Serra Mall
 #   city: HeFei
@@ -13,7 +13,7 @@ location: Wuxi
 #   country: United States
 
 # summary: Valse.
-abstract: 'All members of the laboratory attended the Valse event held in Wuxi.'
+abstract: '实验室成员参加2023年无锡Valse'
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.

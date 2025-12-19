@@ -1,10 +1,10 @@
 ---
 title: 实验室欢送2025届毕业生，祝同学们前程似锦！
-event: The laboratory bids farewell to the Class of 2025 graduates, wishing them a bright future ahead!
+# event: The laboratory bids farewell to the Class of 2025 graduates, wishing them a bright future ahead!
 
-location: HeFei
+location: 合肥
 
-abstract: 'The laboratory bids farewell to the Class of 2025 graduates, wishing them a bright future ahead!'
+abstract: '实验室欢送2025届毕业生，祝同学们前程似锦！'
 
 date: '2025-06-01T8:00:00Z'
 date_end: '2025-06-01T21:00:00Z'

@@ -1,10 +1,10 @@
 ---
 #title: One paper is accepted by ESWA'25
 title: 祝贺实验室两项科研成果被 ICCV'25 录用！
-event: Participate in the 2023 Valse
+# event: Participate in the 2023 Valse
 # event_url: https://example.org
 
-location: Wuxi
+location: 合肥
 # address:
 #   street: 450 Serra Mall
 #   city: HeFei
@@ -13,8 +13,8 @@ location: Wuxi
 #   country: United States
 
 #summary: Congratulations to Lubin Gan and all the collaborators for their paper at ESWA'25.
-summary: 恭喜李欣羽和陈杰同学！
-abstract: 'All members of the laboratory attended the Valse event held in Wuxi.'
+summary: 恭喜吴沛熹和陈杰同学！
+abstract: 恭喜吴沛熹和陈杰同学！
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
