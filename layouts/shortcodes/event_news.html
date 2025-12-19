@@ -25,8 +25,8 @@
     {{- $event := . -}}
     {{- $date := $event.Date.Format "2006年1月" -}}
     <li>
-      <!-- <a href="{{ $event.RelPermalink }}">{{ $event.Title }}</a> -->
-      <span>{{ $event.Title }}</span>
+      <a href="{{ $event.RelPermalink }}">{{ $event.Title }}</a>
+      <!-- <span>{{ $event.Title }}</span> -->
       <span class="news-date">{{ $date }}</span>
     </li>
   {{- end }}
